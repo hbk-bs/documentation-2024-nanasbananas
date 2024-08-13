@@ -1,14 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentation SoSe Vk 24</title>
+    <style>
+        body {
+            background-color: #FFE4E1; /* Light rose pink background */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #FF69B4; /* Big pink headline */
+            font-size: 72px; /* Increased font size */
+            text-align: center;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px; /* Space for the text box */
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #FFB6C1; /* Light pink button */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #FF69B4; /* Darker pink on hover */
+        }
+
+        /* Animation for headline letters */
+        @keyframes move-around {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, -30px); }
+            50% { transform: translate(-50px, 30px); }
+            75% { transform: translate(70px, 60px); }
+            100% { transform: translate(-70px, -60px); }
+        }
+
+        @keyframes rainbow {
+            0% { color: red; }
+            16% { color: orange; }
+            32% { color: yellow; }
+            48% { color: green; }
+            64% { color: blue; }
+            80% { color: indigo; }
+            100% { color: violet; }
+        }
+
+        .animate h1 span {
+            display: inline-block;
+            position: relative;
+            animation: move-around 10s infinite alternate ease-in-out, rainbow 2s infinite linear;
+        }
+
+        /* Different animation durations for each letter */
+        .animate h1 span:nth-child(1) { animation-duration: 12s, 2s; }
+        .animate h1 span:nth-child(2) { animation-duration: 14s, 2s; }
+        .animate h1 span:nth-child(3) { animation-duration: 16s, 2s; }
+        .animate h1 span:nth-child(4) { animation-duration: 18s, 2s; }
+        .animate h1 span:nth-child(5) { animation-duration: 20s, 2s; }
+        .animate h1 span:nth-child(6) { animation-duration: 22s, 2s; }
+        .animate h1 span:nth-child(7) { animation-duration: 24s, 2s; }
+        .animate h1 span:nth-child(8) { animation-duration: 26s, 2s; }
+        .animate h1 span:nth-child(9) { animation-duration: 28s, 2s; }
+        .animate h1 span:nth-child(10) { animation-duration: 30s, 2s; }
+        .animate h1 span:nth-child(11) { animation-duration: 32s, 2s; }
+        .animate h1 span:nth-child(12) { animation-duration: 34s, 2s; }
+        .animate h1 span:nth-child(13) { animation-duration: 36s, 2s; }
+        .animate h1 span:nth-child(14) { animation-duration: 38s, 2s; }
+        .animate h1 span:nth-child(15) { animation-duration: 40s, 2s; }
+        .animate h1 span:nth-child(16) { animation-duration: 42s, 2s; }
+        .animate h1 span:nth-child(17) { animation-duration: 44s, 2s; }
+        .animate h1 span:nth-child(18) { animation-duration: 46s, 2s; }
+        .animate h1 span:nth-child(19) { animation-duration: 48s, 2s; }
+        .animate h1 span:nth-child(20) { animation-duration: 50s, 2s; }
+        .animate h1 span:nth-child(21) { animation-duration: 52s, 2s; }
+
+        .textbox {
+            width: 60%;
+            height: 150px;
+            background-color: #333;
+            color: #FFF;
+            border: 3px solid #FFF;
+            padding: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            font-size: 24px;
+            position: relative;
+            text-align: left;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 2s ease-in-out;
+        }
+
+        .next-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #FFB6C1;
+            color: #FFF;
+            border: none;
+            padding: 5px 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover {
+            background-color: #FF69B4;
+        }
+
+    </style>
 </head>
 <body>
-	<h1>make me your own!</h1>
-	<script src="index.js"></script>
+    <div class="textbox" id="textbox">
+        <span id="text-content">Hi</span>
+        <button class="next-button" id="next-button">Wo bin ich hier gelandet?</button>
+    </div>
+    <h1 id="headline">
+        <!-- Wrapping each letter in a span for individual animation -->
+        <span>D</span><span>o</span><span>k</span><span>u</span><span>m</span><span>e</span><span>n</span><span>t</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span>
+        <span>S</span><span>o</span><span>S</span><span>e</span>
+        <span>V</span><span>k</span>
+        <span>2</span><span>4</span>
+    </h1>
+    <div class="button-container">
+        <a href="https://www.website1.com" class="button">Website 1</a>
+        <a href="https://www.website2.com" class="button">Website 2</a>
+        <a href="https://www.website3.com" class="button">Website 3</a>
+    </div>
+
+    <script>
+        // Wait 5 seconds before triggering the headline animation
+        setTimeout(function() {
+            document.body.classList.add('animate');
+            // Reveal the textbox
+            document.getElementById('textbox').style.opacity = 1;
+        }, 5000);
+
+        // Textbox content and interaction logic
+        const texts = [
+            "Hi",
+            "Wilkommen auf meiner Website!",
+            "Ich hoffe du hast spass beim durchklicken durch meine Websites!"
+        ];
+        let currentTextIndex = 0;
+
+        const textContent = document.getElementById('text-content');
+        const nextButton = document.getElementById('next-button');
+
+        nextButton.addEventListener('click', function() {
+            currentTextIndex++;
+            if (currentTextIndex < texts.length) {
+                textContent.textContent = texts[currentTextIndex];
+                // After the first click, change the button text to "Next"
+                if (currentTextIndex === 1) {
+                    nextButton.textContent = "Next";
+                }
+            } else {
+                currentTextIndex = 0; // Reset to first message or hide button if needed
+                textContent.textContent = texts[currentTextIndex];
+            }
+        });
+    </script>
 </body>
 </html>
