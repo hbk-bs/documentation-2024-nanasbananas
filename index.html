@@ -6,7 +6,7 @@
     <title>Dokumentation SoSe Vk 24</title>
     <style>
         body {
-            background-color: #FFE4E1; /* Light rose pink background */
+            background-color: #509917; /* Light rose pink background */
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -32,7 +32,7 @@
         }
 
         .button {
-            background-color: #FFB6C1; /* Light pink button */
+            background-color: #e77597; /* Light pink button */
             color: white;
             padding: 15px 30px;
             border: none;
@@ -100,8 +100,8 @@
         .textbox {
             width: 60%;
             height: 150px;
-            background-color: #333;
-            color: #FFF;
+            background-color: #7c064b;
+            color: #eba8bc;
             border: 3px solid #FFF;
             padding: 20px;
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
@@ -136,11 +136,19 @@
             background-color: #FF69B4;
         }
 
+        .pdf-link {
+            display: none; /* Initially hidden */
+            color: #FF69B4;
+            text-decoration: underline;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
     </style>
 </head>
 <body>
     <div class="textbox" id="textbox">
-        <span id="text-content">Hi</span>
+        <span id="text-content">Hi!</span>
         <button class="next-button" id="next-button">Wo bin ich hier gelandet?</button>
     </div>
     <h1 id="headline">
@@ -155,6 +163,9 @@
         <a href="https://www.website2.com" class="button">Website 2</a>
         <a href="https://www.website3.com" class="button">Website 3</a>
     </div>
+    
+    <!-- Link to PDF -->
+    <a href="https://beatablemeat.github.io/screenplays/shrek/shrek%202.pdf" id="pdf-link" class="pdf-link" target="_blank">Download PDF</a>
 
     <script>
         // Wait 5 seconds before triggering the headline animation
@@ -166,26 +177,39 @@
 
         // Textbox content and interaction logic
         const texts = [
-            "Hi",
-            "Wilkommen auf meiner Website!",
-            "Ich hoffe du hast spass beim durchklicken durch meine Websites!"
+            "Hi!",
+            "Du bist auf meiner Website  :)",
+            "Durch die drei Buttons kannst du sehen was ich dieses Semester in digitale Gestaltung gemacht habe.",
+            "Viel Spaß beim durchsehen ;)",
+            "Hey hör auf auf diesen Button zu drücken :(",
+            "Nein wirklich, du verschwendest deine Zeit!",
+            "Es ist nicht so als würde das irgendwas bringen.",
+            "Wird dir nicht langweilig langsam?",
+            "Ok, du wolltest es so :3",
+            "Warum können Geister so schlecht lügen? Weil man durch sie hindurchsehen kann!",
+            "Warum können Skelette so schlecht lügen? Weil sie leicht zu durchschauen sind!",
+            "Wie nennt man ein Reh ohne Augen? Keine Ahnung.",
+            "Was macht ein Pirat am Computer? Er drückt die Enter-Taste.",
+            "Warum dürfen Geister keine Lügen erzählen? Weil man durch sie hindurchsehen kann.",
+            "Warum können Koalas nicht als Detektive arbeiten? Weil sie zu viel schlafen und alles verschlafen würden."
         ];
-        let currentTextIndex = 0;
 
+        let currentTextIndex = 0;
         const textContent = document.getElementById('text-content');
         const nextButton = document.getElementById('next-button');
+        const pdfLink = document.getElementById('pdf-link');
 
         nextButton.addEventListener('click', function() {
             currentTextIndex++;
             if (currentTextIndex < texts.length) {
                 textContent.textContent = texts[currentTextIndex];
-                // After the first click, change the button text to "Next"
+                // After the first click, change the button text to "weiter"
                 if (currentTextIndex === 1) {
-                    nextButton.textContent = "Next";
+                    nextButton.textContent = "weiter";
                 }
-            } else {
-                currentTextIndex = 0; // Reset to first message or hide button if needed
-                textContent.textContent = texts[currentTextIndex];
+            } else if (currentTextIndex === 15) {
+                // On the 15th click, show the PDF in the text box
+                textContent.innerHTML = `<a href="https://beatablemeat.github.io/screenplays/shrek/shrek%202.pdf" target="_blank">Download PDF</a>`;
             }
         });
     </script>
